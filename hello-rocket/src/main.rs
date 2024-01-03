@@ -1,9 +1,11 @@
-#[macro_use] extern crate rocket;
+#[macro_use]
+extern crate rocket;
 
 // Try visiting:
 //   http://127.0.0.1:8000
-#[get("/")]                   // <- route attribute
-fn world() -> &'static str {  // <- request handler
+#[get("/")] // <- route attribute
+fn world() -> &'static str {
+    // <- request handler
     "Hello, world!"
 }
 
@@ -17,6 +19,6 @@ fn hello(name: &str, age: u8) -> String {
 #[launch]
 fn rocket() -> _ {
     rocket::build()
-        .mount("/", routes![index])
+        .mount("/", routes![world])
         .mount("/hello", routes![hello])
 }
